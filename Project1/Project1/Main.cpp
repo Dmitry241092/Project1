@@ -1,28 +1,36 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <string>
+#include <ctime>
 
-void func_for(bool c, int n) {
-	for (int i = 0; i <= n; i++)
-	{
-		if (i % 2 == c)
-			std::cout << i << " ";
-	}
-}
+using namespace std;
 
-void foo(bool c, int n) {
-	func_for(c, n);
-}
-int main(int argc, char* argv[])
+#define S 10
+#define Z 7
+
+int main()
 {
-    bool c; int x;
-    setlocale(0, "Russian");
-    std::cout << "¬ведите число:";
-    std::cin >> x;
-    std::cout << "¬ведите '1' дл€ отображени€ нечетных чисел, либо - '0' дл€ отображени€ четных:";
-    std::cin >> c;
+	int A[S][Z];
+	for (int i = 0; i < S; i++)
+	{
+		for (int j = 0; j < Z; j++)
+		{
+			A[i][j] = i + j;
+			cout << A[i][j] << ' ';
+		}
+		cout << endl;
+	}
+	cout << endl;
 
-    foo(c, x);
+	int sum = 0; 
+	time_t t;
+	time(&t);
+	int day = localtime(&t)->tm_mday; 
 
+	for (int x = 0; x < Z; x++)
+	{
+		sum += A[day % Z][x];
+	}
+	cout << sum << endl;
 
-    return 0;
+	return 0;
 }

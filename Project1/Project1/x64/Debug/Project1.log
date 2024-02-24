@@ -1,3 +1,2 @@
 ﻿  Main.cpp
-Z:\Unreal Engine 4\С++\Project1\Project1\Main.cpp(7,16): warning C4805: ==: небезопасное смешение типа "int" и типа "bool" в операции
   Project1.vcxproj -> Z:\Unreal Engine 4\С++\Project1\x64\Debug\Project1.exe
