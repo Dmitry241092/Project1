@@ -1,36 +1,29 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <ctime>
+#include <vector>
 
 using namespace std;
 
-#define S 10
-#define Z 7
-
-int main()
+class Genius : public vector <int>
 {
-	int A[S][Z];
-	for (int i = 0; i < S; i++)
-	{
-		for (int j = 0; j < Z; j++)
-		{
-			A[i][j] = i + j;
-			cout << A[i][j] << ' ';
-		}
-		cout << endl;
-	}
-	cout << endl;
+public:
+    size_t AreaVector(vector <int> b)
+    {
+        return b.size();
+    }
+};
 
-	int sum = 0; 
-	time_t t;
-	time(&t);
-	int day = localtime(&t)->tm_mday; 
 
-	for (int x = 0; x < Z; x++)
-	{
-		sum += A[day % Z][x];
-	}
-	cout << sum << endl;
+int main(int argc, char** argv)
+{
+    
+    system("chcp 1251 > nul");
 
-	return 0;
+    vector <int> v(5, 8);
+
+    for (int a = 0; a < 5; a++) cout << v[a] << "\t";
+
+    Genius g; cout << endl << "Модуль вектора v= " << g.AreaVector(v);
+
+    cout << endl; 
+    return 0;
 }
