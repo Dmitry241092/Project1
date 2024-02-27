@@ -1,29 +1,28 @@
-#include <iostream>
-#include <vector>
+#include <iostream> 
+#include <cmath> 
 
-using namespace std;
+class Vector {
+private:
+    double x;
+    double y;
+    double z;
 
-class Genius : public vector <int>
-{
 public:
-    size_t AreaVector(vector <int> b)
-    {
-        return b.size();
+    Vector(double x, double y, double z) : x(x), y(y), z(z) {}
+
+    void print() {
+        std::cout << "Vector(" << x << ", " << y << ", " << z << ")" << std::endl;
+    }
+
+    double length() {
+        return std::sqrt(x * x + y * y + z * z);
     }
 };
 
+int main() {
+    Vector v(1.0, 2.0, 3.0);
+    v.print();
+    std::cout << "Length: " << v.length() << std::endl;
 
-int main(int argc, char** argv)
-{
-    
-    system("chcp 1251 > nul");
-
-    vector <int> v(5, 8);
-
-    for (int a = 0; a < 5; a++) cout << v[a] << "\t";
-
-    Genius g; cout << endl << "Модуль вектора v= " << g.AreaVector(v);
-
-    cout << endl; 
     return 0;
 }
