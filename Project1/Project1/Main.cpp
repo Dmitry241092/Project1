@@ -1,42 +1,46 @@
-#include <iostream>  
-#include <algorithm> 
-#include <cstdlib>
+#include <iostream>
 using namespace std;
 
-class player
+class Animal
 {
-	string name;
-	int points;
 public:
-	friend bool point_sorter(const player&, const player&);
-	string get_name()const { return name; }
-	int get_points()const { return points; }
-	void set_name(string n) { name = n; }
-	void set_points(int n) { points = n; }
+    virtual void makeSound() const = 0;
 };
-bool point_sorter(const player& l, const player& r)
+
+class Cat : public Animal
 {
-	return l.points > r.points;
-}
-int main() {
-	system("chcp 1251 > nul");  
-	size_t n;
-	cout << "¬ведите число игроков";
-	cin >> n;
-	player* players = new player[n];
-	for (size_t i = 0; i < n; i++)
-	{
-		string name;
-		int point;
-		cout << "¬ведите данные игрока " << i << " (им€ очки):";
-		cin >> name >> point;
-		players[i].set_name(name);
-		players[i].set_points(point);
-	}
-	sort(players, players + n, point_sorter);
-	for (size_t i = 0; i < n; i++)
-	{
-		cout << players[i].get_name() << " " << players[i].get_points() << '\n';
-	}
-	delete[] players;
+public:
+    void makeSound() const override
+    {
+        cout << "Meow!\n";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void makeSound() const override
+    {
+        cout << "Woof!\n";
+    }
+};
+
+class Sheep : public Animal
+{
+public:
+    void makeSound() const override
+    {
+        cout << "Bee!\n";
+    }
+};
+
+int main()
+{
+    Animal* animals[3];
+    animals[0] = new Cat();
+    animals[1] = new Dog();
+    animals[2] = new Sheep();
+
+    for (Animal* a : animals)
+        a->makeSound();
 }
